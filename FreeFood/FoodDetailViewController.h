@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "EventBean.h"
 
-@interface FoodDetailViewController : UIViewController
+@interface FoodDetailViewController : UIViewController <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 
-@property (nonatomic, strong) NSString *ename;
+- (IBAction)shareButton:(id)sender;
+- (IBAction)saveToCal:(id)sender;
+
+@property UIActionSheet *standardIBAS;
+
+@property (nonatomic, strong) EventBean *event;
+
 
 @end

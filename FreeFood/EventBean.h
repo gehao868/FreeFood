@@ -10,6 +10,13 @@
 
 @interface EventBean : NSObject
 
-//@property (nonatomic, strong) NSString *
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *detail;
+@property (strong, nonatomic) NSString *imgUrl;
+@property (strong, nonatomic) NSString *building;
+@property (strong, nonatomic) NSString *place;
+@property (strong, nonatomic) NSString *coordinate;
+@property (strong, nonatomic) NSDate *startTime;
+@property (strong, nonatomic) NSDate *endTime;
 
 @end

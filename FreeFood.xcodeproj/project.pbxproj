@@ -28,6 +28,10 @@
 		7CDB145B190B505F00434AC9 /* FoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB145A190B505F00434AC9 /* FoodDetailViewController.m */; };
 		7CDB145D190B51E700434AC9 /* photo-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDB145C190B51E700434AC9 /* photo-frame.png */; };
 		7CDB1460190B615B00434AC9 /* EventBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB145F190B615B00434AC9 /* EventBean.m */; };
+		7CDB1468190B91AE00434AC9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1467190B91AE00434AC9 /* Social.framework */; };
+		7CDB146A190B96AF00434AC9 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1469190B96AF00434AC9 /* EventKit.framework */; };
+		7CDB146C190BA3A300434AC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146B190BA3A300434AC9 /* CoreLocation.framework */; };
+		7CDB146E190BA69400434AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146D190BA69400434AC9 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,11 @@
 		7CDB145C190B51E700434AC9 /* photo-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-frame.png"; sourceTree = "<group>"; };
 		7CDB145E190B615B00434AC9 /* EventBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBean.h; sourceTree = "<group>"; };
 		7CDB145F190B615B00434AC9 /* EventBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBean.m; sourceTree = "<group>"; };
+		7CDB1465190B78CB00434AC9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7CDB1467190B91AE00434AC9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		7CDB1469190B96AF00434AC9 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		7CDB146B190BA3A300434AC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7CDB146D190BA69400434AC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDB146E190BA69400434AC9 /* MapKit.framework in Frameworks */,
+				7CDB146C190BA3A300434AC9 /* CoreLocation.framework in Frameworks */,
+				7CDB146A190B96AF00434AC9 /* EventKit.framework in Frameworks */,
+				7CDB1468190B91AE00434AC9 /* Social.framework in Frameworks */,
 				7C3ADBA2190843500039F594 /* CoreGraphics.framework in Frameworks */,
 				7C3ADBA4190843500039F594 /* UIKit.framework in Frameworks */,
 				7C3ADBA0190843500039F594 /* Foundation.framework in Frameworks */,
@@ -119,6 +132,11 @@
 		7C3ADB9E190843500039F594 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CDB146D190BA69400434AC9 /* MapKit.framework */,
+				7CDB146B190BA3A300434AC9 /* CoreLocation.framework */,
+				7CDB1469190B96AF00434AC9 /* EventKit.framework */,
+				7CDB1467190B91AE00434AC9 /* Social.framework */,
+				7CDB1465190B78CB00434AC9 /* QuartzCore.framework */,
 				7C3ADB9F190843500039F594 /* Foundation.framework */,
 				7C3ADBA1190843500039F594 /* CoreGraphics.framework */,
 				7C3ADBA3190843500039F594 /* UIKit.framework */,
@@ -130,6 +148,7 @@
 		7C3ADBA5190843500039F594 /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
+				7CDB146F190C52FE00434AC9 /* JSON */,
 				7CDB145C190B51E700434AC9 /* photo-frame.png */,
 				7CDB1452190B300B00434AC9 /* full_breakfast.jpg */,
 				7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */,
@@ -179,6 +198,13 @@
 				7C3ADBCA190843500039F594 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7CDB146F190C52FE00434AC9 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
