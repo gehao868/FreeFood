@@ -7,6 +7,8 @@
 //
 
 #import "FirstViewController.h"
+#import "FoodViewCell.h"
+#import "FoodDetailViewController.h"
 
 @interface FirstViewController ()
 
@@ -15,11 +17,14 @@
 @implementation FirstViewController
 {
     NSArray *tableData;
+    NSArray *thumbnails;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tableData = [NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    tableData = [NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", nil];
+    thumbnails = [NSMutableArray arrayWithObjects:@"ham_and_egg_sandwich.jpg", @"full_breakfast.jpg", nil];
 
 }
 
@@ -34,18 +39,31 @@
     return [tableData count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    static NSString *CellIdentifier = @"FoodViewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    FoodViewCell *cell = (FoodViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[FoodViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
     }
     
-    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+    cell.eventLabel.text = [tableData objectAtIndex:indexPath.row];
+    cell.eventImage.image = [UIImage imageNamed:[thumbnails objectAtIndex: indexPath.row]];
+    
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showdetail"]) {
+        NSIndexPath *indexPath = nil;
+        
+        indexPath = [self.tableView indexPathForSelectedRow];
+        FoodDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.ename = [tableData objectAtIndex:indexPath.row];
+    }
 }
 
 @end
