@@ -7,6 +7,7 @@
 //
 
 #import "PostEventController.h"
+#import "EventBean.h"
 
 @interface PostEventController ()
 
@@ -37,11 +38,9 @@
 {
 
     [super viewDidLoad];
-    originalImage = [self.imageView image];
     [_room setDelegate:self];
     [_description setDelegate:self];
     
-    locationManager = [[CLLocationManager alloc] init];
     
     self.locationArray = [[NSArray alloc] initWithObjects:@"Select Location",@"GHC",@"NSH",@"DH",@"HBH",@"UC",@"Hunt", nil];
     
@@ -141,22 +140,72 @@
     NSLog(@"send pressed");
     if ([self validateInput]) {
         NSLog(@"input validate success");
-        if ([self postEvent]) {
-            UIAlertView *errorAlert = [[UIAlertView alloc]
-                                       initWithTitle:@"Success" message:@"Event Posted" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [errorAlert show];
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            UIAlertView *errorAlert = [[UIAlertView alloc]
-                                       initWithTitle:@"Error" message:@"Post failed. Please check your network connection and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [errorAlert show];
-        }
+        [self postEvent];
     }
 }
 
-- (BOOL) postEvent {
+- (void) postEvent {
+    originalImage = [self.imageView image];
     
-    return NO;
+    PFObject *event = [PFObject objectWithClassName:@"event"];
+    [event setObject:_description.text forKey:@"description"];
+    [event setObject:_locationLabel.text forKey:@"building"];
+    [event setObject:_room.text forKey:@"place"];
+    [event setObject:_startDateTime forKey:@"startTime"];
+    [event setObject:_endDateTime forKey:@"endTime"];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_latitude longitude:_longitude];
+    [event setObject:geoPoint forKey:@"coordinate"];
+    
+    // Recipe image
+    NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.8);
+    NSString *filename = [NSString stringWithFormat:@"%f.png", [[NSDate date] timeIntervalSince1970]];
+    PFFile *imageFile = [PFFile fileWithName:filename data:imageData];
+    [event setObject:imageFile forKey:@"image"];
+    
+    // Show progress
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+    indicator.center = self.view.center;
+    [self.view addSubview:indicator];
+    [indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    [indicator startAnimating];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.labelText = @"Sending";
+//    [hud show:YES];
+    
+    // Upload recipe to Parse
+    [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        [hud hide:YES];
+        [indicator stopAnimating];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
+        if (succeeded) {
+            NSLog(@"post succeeded");
+        } else {
+            NSLog(@"%@",[error localizedDescription]);
+        }
+        if (!error) {
+            // Show success message
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Complete" message:@"Successfully posted the event" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            // Notify table view to reload the recipes from Parse cloud
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTable" object:self];
+            
+            // Dismiss the controller
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Failure" message:@"Post failed. Please check your network connection and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        
+    }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if([[alertView title] isEqualToString:@"Upload Complete"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (BOOL) validateInput {
@@ -424,6 +473,7 @@
 }
 
 - (IBAction)getCurrentLocation:(id)sender {
+    locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
