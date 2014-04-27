@@ -155,6 +155,7 @@
 }
 
 - (BOOL) postEvent {
+    
     return NO;
 }
 
@@ -228,6 +229,13 @@
     originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    float width = 480.0f;
+    float height = 480.0f / originalImage
+    CGSize newSize = CGSizeMake(100.0f, 100.0f);
+    UIGraphicsBeginImageContext(newSize);
+    [originalImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    originalImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     [self.imageView setImage:originalImage];
 }
 
