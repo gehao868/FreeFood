@@ -30,9 +30,13 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *locationPicker;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (nonatomic) NSArray *locationArray;
+@property (nonatomic) NSArray *latArray;
+@property (nonatomic) NSArray *lonArray;
 @property (strong, nonatomic) IBOutlet UILabel *startLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endLabel;
 @property (nonatomic) float longitude;
 @property (nonatomic) float latitude;
+@property (nonatomic) float rawLongitude;
+@property (nonatomic) float rawLatitude;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PostEventController.h"
 #import "EventBean.h"
+#include <stdlib.h>
 
 @interface PostEventController ()
 
@@ -43,6 +44,8 @@
     
     
     self.locationArray = [[NSArray alloc] initWithObjects:@"Select Location",@"GHC",@"NSH",@"DH",@"HBH",@"UC",@"Hunt",@"417 S. Craig",@"EDSH",@"Cut",@"WH",@"PH",@"BH",@"SH",@"CFA",@"Tepper",nil];
+    self.latArray = [[NSArray alloc] initWithObjects:@0,@40.443637f,@40.443531f,@40.442347f,@40.444265f,@40.443661f,@40.441017f,@40.444584f,@40.443947f,@40.442559,@40.442722f,@40.44181f,@40.441444f,@40.441787f,@40.441395f,@40.441433f,nil];
+    self.lonArray = [[NSArray alloc] initWithObjects:@0,@-79.944466f,@-79.9457f,@-79.944209f,@-79.945371f,@-79.942351f,@-79.943731f,@-79.948489f,@-79.945554f,@-79.943296f,@-79.945817f,@-79.946273f,@-79.944869f,@-79.947331f,@-79.942935f,@-79.942139f,nil];
     
     NSDate *date = [NSDate date];
     df = [[NSDateFormatter alloc] init];
@@ -53,8 +56,6 @@
     [_endDateLabel setText:[df stringFromDate:[NSDate dateWithTimeInterval:3600 sinceDate:date]]];
     self.startDateTime = date;
     self.endDateTime = [NSDate dateWithTimeInterval:3600 sinceDate:date];
-    self.longitude = 0;
-    self.latitude = 0;
     
     [self.startDatePicker addTarget:self action:@selector(startDateChanged:) forControlEvents:UIControlEventValueChanged];
     [self.endDatePicker addTarget:self action:@selector(endDateChanged:) forControlEvents:UIControlEventValueChanged];
@@ -153,7 +154,12 @@
     [event setObject:_room.text forKey:@"place"];
     [event setObject:_startDateTime forKey:@"startTime"];
     [event setObject:_endDateTime forKey:@"endTime"];
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_latitude longitude:_longitude];
+    PFGeoPoint *geoPoint;
+    if (self.positionSwitch.on) {
+        geoPoint = [PFGeoPoint geoPointWithLatitude:_latitude longitude:_longitude];
+    } else {
+        geoPoint = [PFGeoPoint geoPointWithLatitude:_rawLatitude longitude:_rawLongitude];
+    }
     [event setObject:geoPoint forKey:@"coordinate"];
     
     // Recipe image
@@ -450,6 +456,10 @@
         locationSelected = YES;
         self.locationLabel.textColor = [UIColor blackColor];
     }
+    int r = arc4random() % 50;
+    self.rawLatitude = [[self.latArray objectAtIndex:row] floatValue] + r * 0.000001;
+    r = arc4random() % 74;
+    self.rawLongitude = [[self.lonArray objectAtIndex:row] floatValue] + r * 0.000001;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
