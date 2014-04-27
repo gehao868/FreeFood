@@ -229,13 +229,15 @@
     originalImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    // resize photo
     float width = 480.0f;
-    float height = 480.0f / originalImage
-    CGSize newSize = CGSizeMake(100.0f, 100.0f);
+    float height = width / [originalImage size].width * [originalImage size].height;
+    CGSize newSize = CGSizeMake(width, height);
     UIGraphicsBeginImageContext(newSize);
     [originalImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     originalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    // display photo
     [self.imageView setImage:originalImage];
 }
 
