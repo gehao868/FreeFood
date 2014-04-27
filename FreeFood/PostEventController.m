@@ -42,7 +42,7 @@
     [_description setDelegate:self];
     
     
-    self.locationArray = [[NSArray alloc] initWithObjects:@"Select Location",@"GHC",@"NSH",@"DH",@"HBH",@"UC",@"Hunt", nil];
+    self.locationArray = [[NSArray alloc] initWithObjects:@"Select Location",@"GHC",@"NSH",@"DH",@"HBH",@"UC",@"Hunt",@"417 S. Craig",@"EDSH",@"Cut",@"WH",@"PH",@"BH",@"SH",@"CFA",@"Tepper",nil];
     
     NSDate *date = [NSDate date];
     df = [[NSDateFormatter alloc] init];
@@ -170,10 +170,6 @@
     [indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     [indicator startAnimating];
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    hud.mode = MBProgressHUDModeIndeterminate;
-//    hud.labelText = @"Sending";
-//    [hud show:YES];
     
     // Upload recipe to Parse
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
