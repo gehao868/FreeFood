@@ -75,7 +75,7 @@
                     // access granted
                     EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
                     event.title     = self.event.description;
-                    event.location = self.event.place;
+                    event.location =[NSString stringWithFormat:@"%@ %@", self.event.building, self.event.place];
                     
                     NSDateFormatter *tempFormatter = [[NSDateFormatter alloc]init];
                     [tempFormatter setDateFormat:@"dd.MM.yyyy HH:mm"];
@@ -105,16 +105,38 @@
     
 }
 
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
+    NSDateFormatter *tempFormatter = [[NSDateFormatter alloc]init];
+    [tempFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
+    NSString *txt = [NSString stringWithFormat:@"Free food event: %@ in %@ %@. Start at %@. Share from FreeFood app", self.event.description, self.event.building, self.event.place, [tempFormatter stringFromDate:self.event.startTime]];
+
     if (buttonIndex == 0) {
+        
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [controller setInitialText:self.event.description];
+        [controller setInitialText:txt];
+        [self.event.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                // image can now be set on a UIImageView
+                [controller addImage:image];
+            }
+        }];
+        
         [self presentViewController:controller animated:YES completion:Nil];
+        
     } else if (buttonIndex == 1) {
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:self.event.description]; //TODO: ADD MORE CONTENT
+        [tweetSheet setInitialText:txt];
+        
+        [self.event.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                // image can now be set on a UIImageView
+                [tweetSheet addImage:image];
+            }
+        }];
         [self presentViewController:tweetSheet animated:YES completion:nil];
     } else if (buttonIndex == 2) {
         

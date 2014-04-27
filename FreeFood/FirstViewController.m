@@ -65,6 +65,10 @@
 
 -(PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query orderByAscending:@"startTime"];
+    
+    [query whereKey:@"startTime" greaterThanOrEqualTo:[NSDate date]];
+    
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     return query;
 }
@@ -102,7 +106,7 @@
     cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"building"], [object objectForKey:@"place"]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy"];
+    [formatter setDateFormat:@"MM-dd-yyyy HH:MM"];
     cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
 
     return cell;
