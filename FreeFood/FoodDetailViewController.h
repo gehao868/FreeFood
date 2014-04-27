@@ -13,6 +13,10 @@
 @interface FoodDetailViewController : UIViewController <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
+@property (weak, nonatomic) IBOutlet UILabel *eventPlace;
+@property (weak, nonatomic) IBOutlet UILabel *startTime;
+@property (weak, nonatomic) IBOutlet UILabel *endTime;
+@property (weak, nonatomic) IBOutlet PFImageView *bigImage;
 
 - (IBAction)shareButton:(id)sender;
 - (IBAction)saveToCal:(id)sender;

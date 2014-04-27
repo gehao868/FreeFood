@@ -29,7 +29,19 @@
 {
     [super viewDidLoad];
     
+    
+    self.bigImage.file = self.event.image;
+    [self.bigImage loadInBackground];
+    
     self.eventName.text = self.event.description;
+    
+    self.eventPlace.text = [NSString stringWithFormat:@"%@ %@",self.event.building, self.event.place];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd-yyyy HH:MM"];
+    self.startTime.text = [formatter stringFromDate:self.event.startTime];
+    self.endTime.text = [formatter stringFromDate:self.event.endTime];
+    
 }
 
 - (void)didReceiveMemoryWarning
