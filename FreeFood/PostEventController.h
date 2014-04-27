@@ -14,6 +14,7 @@
 - (IBAction)addPhoto:(id)sender;
 - (IBAction)positionSwitchChange:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
+- (IBAction)sendPressed:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UISwitch *positionSwitch;
 @property NSDate *startDateTime;

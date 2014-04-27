@@ -37,6 +37,7 @@
 {
 
     [super viewDidLoad];
+    originalImage = [self.imageView image];
     [_room setDelegate:self];
     [_description setDelegate:self];
     
@@ -51,7 +52,8 @@
     [df setDateFormat:@"yyyy/MM/dd HH:mm"];
     [self.startDateLabel setText:[df stringFromDate:date]];
     [_endDateLabel setText:[df stringFromDate:[NSDate dateWithTimeInterval:3600 sinceDate:date]]];
-    
+    self.startDateTime = date;
+    self.endDateTime = [NSDate dateWithTimeInterval:3600 sinceDate:date];
     self.longitude = 0;
     self.latitude = 0;
     
@@ -115,7 +117,7 @@
 }
 
 - (IBAction)addPhoto:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Add Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Select From Gallery", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Select From Gallery", nil];
     
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault; [actionSheet showInView:self.view.window];
 }
@@ -130,7 +132,70 @@
 }
 
 - (IBAction)cancelPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"cancel pressed");
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (IBAction)sendPressed:(id)sender {
+    NSLog(@"send pressed");
+    if ([self validateInput]) {
+        NSLog(@"input validate success");
+        if ([self postEvent]) {
+            UIAlertView *errorAlert = [[UIAlertView alloc]
+                                       initWithTitle:@"Success" message:@"Event Posted" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            UIAlertView *errorAlert = [[UIAlertView alloc]
+                                       initWithTitle:@"Error" message:@"Post failed. Please check your network connection and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];
+        }
+    }
+}
+
+- (BOOL) postEvent {
+    return NO;
+}
+
+- (BOOL) validateInput {
+    if ([[self.description text] isEqual: @""]) {
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Description cannot be empty." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if ([[self.room text] isEqual: @""]) {
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Room number cannot be empty." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if ([self.startDateTime compare:self.endDateTime] == NSOrderedDescending) {
+        NSLog(@"%@",[df stringFromDate:self.startDateTime]);
+        NSLog(@"%@",[df stringFromDate:self.endDateTime]);
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"End time must be later than start time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if ([self.endDateTime compare:[NSDate date]] == NSOrderedAscending) {
+        NSLog(@"%@",[df stringFromDate:self.startDateTime]);
+        NSLog(@"%@",[df stringFromDate:self.endDateTime]);
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"End time must be no later than current time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if (locationSelected == NO) {
+        NSLog(@"%@",[df stringFromDate:self.startDateTime]);
+        NSLog(@"%@",[df stringFromDate:self.endDateTime]);
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Please select location of the event." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
