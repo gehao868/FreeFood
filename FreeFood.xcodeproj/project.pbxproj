@@ -22,8 +22,6 @@
 		7C3ADBC4190843500039F594 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3ADBA3190843500039F594 /* UIKit.framework */; };
 		7C3ADBCC190843500039F594 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C3ADBCA190843500039F594 /* InfoPlist.strings */; };
 		7C3ADBCE190843500039F594 /* FreeFoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3ADBCD190843500039F594 /* FreeFoodTests.m */; };
-		7CDB1451190B2DF700434AC9 /* ham_and_egg_sandwich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */; };
-		7CDB1453190B300B00434AC9 /* full_breakfast.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CDB1452190B300B00434AC9 /* full_breakfast.jpg */; };
 		7CDB1458190B350B00434AC9 /* FoodViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB1457190B350B00434AC9 /* FoodViewCell.m */; };
 		7CDB145B190B505F00434AC9 /* FoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB145A190B505F00434AC9 /* FoodDetailViewController.m */; };
 		7CDB145D190B51E700434AC9 /* photo-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDB145C190B51E700434AC9 /* photo-frame.png */; };
@@ -66,8 +64,6 @@
 		7C3ADBC9190843500039F594 /* FreeFoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreeFoodTests-Info.plist"; sourceTree = "<group>"; };
 		7C3ADBCB190843500039F594 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C3ADBCD190843500039F594 /* FreeFoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeFoodTests.m; sourceTree = "<group>"; };
-		7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ham_and_egg_sandwich.jpg; sourceTree = "<group>"; };
-		7CDB1452190B300B00434AC9 /* full_breakfast.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = full_breakfast.jpg; sourceTree = "<group>"; };
 		7CDB1456190B350B00434AC9 /* FoodViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewCell.h; sourceTree = "<group>"; };
 		7CDB1457190B350B00434AC9 /* FoodViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewCell.m; sourceTree = "<group>"; };
 		7CDB1459190B505F00434AC9 /* FoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailViewController.h; sourceTree = "<group>"; };
@@ -148,10 +144,7 @@
 		7C3ADBA5190843500039F594 /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
-				7CDB146F190C52FE00434AC9 /* JSON */,
 				7CDB145C190B51E700434AC9 /* photo-frame.png */,
-				7CDB1452190B300B00434AC9 /* full_breakfast.jpg */,
-				7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */,
 				7C3ADBAE190843500039F594 /* AppDelegate.h */,
 				7C3ADBAF190843500039F594 /* AppDelegate.m */,
 				7C3ADBB1190843500039F594 /* Main.storyboard */,
@@ -198,13 +191,6 @@
 				7C3ADBCA190843500039F594 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7CDB146F190C52FE00434AC9 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CDB145D190B51E700434AC9 /* photo-frame.png in Resources */,
-				7CDB1453190B300B00434AC9 /* full_breakfast.jpg in Resources */,
 				7C3ADBBB190843500039F594 /* Images.xcassets in Resources */,
-				7CDB1451190B2DF700434AC9 /* ham_and_egg_sandwich.jpg in Resources */,
 				7C3ADBAA190843500039F594 /* InfoPlist.strings in Resources */,
 				7C3ADBB3190843500039F594 /* Main.storyboard in Resources */,
 			);

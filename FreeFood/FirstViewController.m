@@ -11,37 +11,51 @@
 #import "FoodDetailViewController.h"
 #import "EventBean.h"
 
+#define SERVER @"http://mobile.yiye.im:8080/"
+
 @interface FirstViewController ()
 
 @end
 
 @implementation FirstViewController
 {
-    NSArray *events;
+    NSMutableArray *events;
     NSArray *searchResults;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    EventBean *event1 = [EventBean new];
-    event1.title = @"Egg Benedict";
-    event1.imgUrl = @"ham_and_egg_sandwich.jpg";
-    
-    EventBean *event2 = [EventBean new];
-    event2.title = @"Mushroom Risotto";
-    event2.imgUrl = @"full_breakfast.jpg";
-    
-    events = [NSArray arrayWithObjects:event1, event2, nil];
-
+    [self retrieveData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void)retrieveData {
+    NSError *error;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mobile.yiye.im:8080/mobile/queryAll.do"]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *eventDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+    
+    events = [[NSMutableArray alloc] init];
+    
+    for (id eventInfo in eventDic) {
+        EventBean *event = [EventBean new];
+        event.title = [eventInfo objectForKey:@"title"];
+        event.place = [eventInfo objectForKey:@"place"];
+        event.building = [eventInfo objectForKey:@"building"];
+        event.coordinate = [eventInfo objectForKey:@"coordinate"];
+        event.detail = [eventInfo objectForKey:@"detail"];
+        event.imgUrl = [eventInfo objectForKey:@"imgUrl"];
+        
+        //event.endTime = [eventInfo objectForKey:@"endTime"];
+        //event.time = [eventInfo objectForKey:@"time"];
+        
+        [events addObject:event];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -76,8 +90,13 @@
     } else {
         event = [events objectAtIndex:indexPath.row];
     }
+    
     cell.eventLabel.text = event.title;
-    cell.eventImage.image = [UIImage imageNamed:event.imgUrl];
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"http://mobile.yiye.im:8080/%@", event.imgUrl]]];
+    cell.eventImage.image = [UIImage imageWithData: imageData];
+    cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", event.building, event.place];
+   // cell.eventTime.text
     
     return cell;
 }
