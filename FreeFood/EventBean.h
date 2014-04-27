@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+
 
 @interface EventBean : NSObject
 
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *detail;
-@property (strong, nonatomic) NSString *imgUrl;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) PFFile *image;
 @property (strong, nonatomic) NSString *building;
 @property (strong, nonatomic) NSString *place;
 @property (strong, nonatomic) NSString *coordinate;

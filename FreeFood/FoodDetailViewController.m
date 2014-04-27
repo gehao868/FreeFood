@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    self.eventName.text = self.event.title;
+    self.eventName.text = self.event.description;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +62,7 @@
                 {
                     // access granted
                     EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
-                    event.title     = self.event.title;
+                    event.title     = self.event.description;
                     event.location = self.event.place;
                     
                     NSDateFormatter *tempFormatter = [[NSDateFormatter alloc]init];
@@ -97,12 +97,12 @@
     
     if (buttonIndex == 0) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [controller setInitialText:self.event.title];
+        [controller setInitialText:self.event.description];
         [self presentViewController:controller animated:YES completion:Nil];
     } else if (buttonIndex == 1) {
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:self.event.title]; //TODO: ADD MORE CONTENT
+        [tweetSheet setInitialText:self.event.description]; //TODO: ADD MORE CONTENT
         [self presentViewController:tweetSheet animated:YES completion:nil];
     } else if (buttonIndex == 2) {
         
