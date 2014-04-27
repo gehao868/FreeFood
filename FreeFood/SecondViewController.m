@@ -12,7 +12,9 @@
 
 @end
 
-@implementation SecondViewController
+@implementation SecondViewController {
+    BOOL initRegion;
+}
 
 - (void)viewDidLoad
 {
@@ -29,9 +31,13 @@
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    NSLog(@"position updated");
     CLLocationCoordinate2D loc = [userLocation coordinate];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 250, 250);
-    [self.mapView setRegion:region animated:YES];
+    if (!initRegion) {
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 250, 250);
+        [self.mapView setRegion:region animated:YES];
+        initRegion = YES;
+    }
 }
 
 @end
