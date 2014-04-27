@@ -121,6 +121,24 @@
         destViewController.hidesBottomBarWhenPushed = YES;
         destViewController.event = event;
     }
+    
+    if ([segue.identifier isEqualToString:@"postEvent"]) {
+        NSIndexPath *indexPath = nil;
+        EventBean *event = nil;
+        
+        if (self.searchDisplayController.active) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            event = [searchResults objectAtIndex:indexPath.row];
+        } else {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            event = [events objectAtIndex:indexPath.row];
+        }
+        
+        indexPath = [self.tableView indexPathForSelectedRow];
+        FoodDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.hidesBottomBarWhenPushed = YES;
+        destViewController.event = event;
+    }
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
