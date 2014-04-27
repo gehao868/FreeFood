@@ -32,6 +32,8 @@
 		7CDB146A190B96AF00434AC9 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1469190B96AF00434AC9 /* EventKit.framework */; };
 		7CDB146C190BA3A300434AC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146B190BA3A300434AC9 /* CoreLocation.framework */; };
 		7CDB146E190BA69400434AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146D190BA69400434AC9 /* MapKit.framework */; };
+		91E227DB190CB0E000D1C282 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91E227D8190CB0E000D1C282 /* default.jpg */; };
+		91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DA190CB0E000D1C282 /* PostEventController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,9 @@
 		7CDB1469190B96AF00434AC9 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		7CDB146B190BA3A300434AC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CDB146D190BA69400434AC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		91E227D8190CB0E000D1C282 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
+		91E227D9190CB0E000D1C282 /* PostEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEventController.h; sourceTree = "<group>"; };
+		91E227DA190CB0E000D1C282 /* PostEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEventController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +155,9 @@
 			children = (
 				7CDB146F190C52FE00434AC9 /* JSON */,
 				7CDB145C190B51E700434AC9 /* photo-frame.png */,
+				91E227D8190CB0E000D1C282 /* default.jpg */,
+				91E227D9190CB0E000D1C282 /* PostEventController.h */,
+				91E227DA190CB0E000D1C282 /* PostEventController.m */,
 				7CDB1452190B300B00434AC9 /* full_breakfast.jpg */,
 				7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */,
 				7C3ADBAE190843500039F594 /* AppDelegate.h */,
@@ -288,6 +296,7 @@
 			files = (
 				7CDB145D190B51E700434AC9 /* photo-frame.png in Resources */,
 				7CDB1453190B300B00434AC9 /* full_breakfast.jpg in Resources */,
+				91E227DB190CB0E000D1C282 /* default.jpg in Resources */,
 				7C3ADBBB190843500039F594 /* Images.xcassets in Resources */,
 				7CDB1451190B2DF700434AC9 /* ham_and_egg_sandwich.jpg in Resources */,
 				7C3ADBAA190843500039F594 /* InfoPlist.strings in Resources */,
@@ -314,6 +323,7 @@
 				7CDB145B190B505F00434AC9 /* FoodDetailViewController.m in Sources */,
 				7CDB1458190B350B00434AC9 /* FoodViewCell.m in Sources */,
 				7C3ADBB0190843500039F594 /* AppDelegate.m in Sources */,
+				91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */,
 				7CDB1460190B615B00434AC9 /* EventBean.m in Sources */,
 				7C3ADBB6190843500039F594 /* FirstViewController.m in Sources */,
 				7C3ADBAC190843500039F594 /* main.m in Sources */,
