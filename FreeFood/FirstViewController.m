@@ -65,6 +65,7 @@
 
 -(PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     return query;
 }
 
@@ -125,19 +126,21 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showdetail"]) {
-        NSIndexPath *indexPath = nil;
-        EventBean *event = nil;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        FoodDetailViewController *destViewController = segue.destinationViewController;
         
-        if (self.searchDisplayController.active) {
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            //event = [searchResults objectAtIndex:indexPath.row];
-        } else {
-            indexPath = [self.tableView indexPathForSelectedRow];
-           // event = [events objectAtIndex:indexPath.row];
-        }
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        EventBean *event = [[EventBean alloc] init];
+        
+        event.description = [object objectForKey:@"description"];
+        event.image = [object objectForKey:@"image"];
+        event.building =[object objectForKey:@"building"];
+        event.place = [object objectForKey:@"place"];
+        
+        event.startTime = [object objectForKey:@"startTime"];
+        event.endTime = [object objectForKey:@"endTime"];
         
         indexPath = [self.tableView indexPathForSelectedRow];
-        FoodDetailViewController *destViewController = segue.destinationViewController;
         destViewController.hidesBottomBarWhenPushed = YES;
         destViewController.event = event;
     }
