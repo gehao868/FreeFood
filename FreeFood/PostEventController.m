@@ -188,10 +188,20 @@
         return NO;
     }
     if (locationSelected == NO) {
-        NSLog(@"%@",[df stringFromDate:self.startDateTime]);
-        NSLog(@"%@",[df stringFromDate:self.endDateTime]);
         UIAlertView *errorAlert = [[UIAlertView alloc]
                                    initWithTitle:@"Error" message:@"Please select location of the event." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if ([[self.description text] length] > 140) {
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Description cannot be longer than 140 characters." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [errorAlert show];
+        return NO;
+    }
+    if ([[self.room text] length] > 20) {
+        UIAlertView *errorAlert = [[UIAlertView alloc]
+                                   initWithTitle:@"Error" message:@"Room number cannot be longer than 20 characters." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [errorAlert show];
         return NO;
     }
