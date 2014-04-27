@@ -10,6 +10,7 @@
 #import "FoodViewCell.h"
 #import "FoodDetailViewController.h"
 #import "EventBean.h"
+#import "PostEventController.h"
 
 #define SERVER @"http://mobile.yiye.im:8080/"
 
@@ -123,21 +124,8 @@
     }
     
     if ([segue.identifier isEqualToString:@"postEvent"]) {
-        NSIndexPath *indexPath = nil;
-        EventBean *event = nil;
-        
-        if (self.searchDisplayController.active) {
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            event = [searchResults objectAtIndex:indexPath.row];
-        } else {
-            indexPath = [self.tableView indexPathForSelectedRow];
-            event = [events objectAtIndex:indexPath.row];
-        }
-        
-        indexPath = [self.tableView indexPathForSelectedRow];
-        FoodDetailViewController *destViewController = segue.destinationViewController;
+        PostEventController *destViewController = segue.destinationViewController;
         destViewController.hidesBottomBarWhenPushed = YES;
-        destViewController.event = event;
     }
 }
 
