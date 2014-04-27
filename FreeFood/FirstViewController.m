@@ -20,8 +20,7 @@
 
 @implementation FirstViewController
 {
-//    NSMutableArray *events;
-//    NSArray *searchResults;
+
 }
 
 -(id)initWithCoder:(NSCoder *)aCoder {
@@ -75,32 +74,6 @@
     [super didReceiveMemoryWarning];
 }
 
-/*
--(void)retrieveData {
-    NSError *error;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mobile.yiye.im:8080/mobile/queryAll.do"]];
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *eventDic = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-    
-    events = [[NSMutableArray alloc] init];
-    
-    for (id eventInfo in eventDic) {
-        EventBean *event = [EventBean new];
-        event.title = [eventInfo objectForKey:@"title"];
-        event.place = [eventInfo objectForKey:@"place"];
-        event.building = [eventInfo objectForKey:@"building"];
-        event.coordinate = [eventInfo objectForKey:@"coordinate"];
-        event.detail = [eventInfo objectForKey:@"detail"];
-        event.imgUrl = [eventInfo objectForKey:@"imgUrl"];
-        
-        //event.endTime = [eventInfo objectForKey:@"endTime"];
-        //event.time = [eventInfo objectForKey:@"time"];
-        
-        [events addObject:event];
-    }
-}
- 
-*/
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,22 +92,18 @@
         cell = [[FoodViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
     }
     
-
+    cell.eventLabel.text = [object objectForKey:@"description"];
+    PFFile *thumbnail = [object objectForKey:@"image"];
+    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+    thumbnailImageView.file = thumbnail;
+    [thumbnailImageView loadInBackground];
     
-//    if (tableView == self.searchDisplayController.searchResultsTableView) {
-//        event = [searchResults objectAtIndex:indexPath.row];
-//    } else {
-        cell.eventLabel.text = [object objectForKey:@"description"];
-        PFFile *thumbnail = [object objectForKey:@"image"];
-        PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
-        thumbnailImageView.file = thumbnail;
-        [thumbnailImageView loadInBackground];
-        cell.eventPlace.text = [object objectForKey:@"building"];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MM-dd-yyyy"];
-        cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
-        //[NSString stringWithFormat:@"%@ %@", event.building, event.place];
-//    }
+    cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"building"], [object objectForKey:@"place"]];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd-yyyy"];
+    cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
+
     return cell;
 }
 
@@ -180,17 +149,17 @@
 
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
-  //  searchResults = [events filteredArrayUsingPredicate:resultPredicate];
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                                        objectAtIndex:[self.searchDisplayController.searchBar
-                                                                       selectedScopeButtonIndex]]];
-    return YES;
-}
+//- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+//{
+//    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
+//  //  searchResults = [events filteredArrayUsingPredicate:resultPredicate];
+//}
+//
+//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+//                                                        objectAtIndex:[self.searchDisplayController.searchBar
+//                                                                       selectedScopeButtonIndex]]];
+//    return YES;
+//}
 
 @end
