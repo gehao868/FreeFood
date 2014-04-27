@@ -30,6 +30,13 @@
 		7CDB146A190B96AF00434AC9 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1469190B96AF00434AC9 /* EventKit.framework */; };
 		7CDB146C190BA3A300434AC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146B190BA3A300434AC9 /* CoreLocation.framework */; };
 		7CDB146E190BA69400434AC9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB146D190BA69400434AC9 /* MapKit.framework */; };
+		7CDB147D190CC5AA00434AC9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB147C190CC5AA00434AC9 /* Parse.framework */; };
+		7CDB147F190CC65100434AC9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB147E190CC65100434AC9 /* CFNetwork.framework */; };
+		7CDB1481190CC65B00434AC9 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1480190CC65B00434AC9 /* libz.1.1.3.dylib */; };
+		7CDB1483190CC66800434AC9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1482190CC66800434AC9 /* MobileCoreServices.framework */; };
+		7CDB1485190CC67B00434AC9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1484190CC67B00434AC9 /* Security.framework */; };
+		7CDB1487190CC68900434AC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1486190CC68900434AC9 /* StoreKit.framework */; };
+		7CDB1489190CC69A00434AC9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1488190CC69A00434AC9 /* SystemConfiguration.framework */; };
 		91E227DB190CB0E000D1C282 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91E227D8190CB0E000D1C282 /* default.jpg */; };
 		91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DA190CB0E000D1C282 /* PostEventController.m */; };
 /* End PBXBuildFile section */
@@ -78,6 +85,13 @@
 		7CDB1469190B96AF00434AC9 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		7CDB146B190BA3A300434AC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CDB146D190BA69400434AC9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7CDB147C190CC5AA00434AC9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		7CDB147E190CC65100434AC9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7CDB1480190CC65B00434AC9 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		7CDB1482190CC66800434AC9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7CDB1484190CC67B00434AC9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7CDB1486190CC68900434AC9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7CDB1488190CC69A00434AC9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		91E227D8190CB0E000D1C282 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		91E227D9190CB0E000D1C282 /* PostEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEventController.h; sourceTree = "<group>"; };
 		91E227DA190CB0E000D1C282 /* PostEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEventController.m; sourceTree = "<group>"; };
@@ -88,8 +102,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDB1489190CC69A00434AC9 /* SystemConfiguration.framework in Frameworks */,
+				7CDB1487190CC68900434AC9 /* StoreKit.framework in Frameworks */,
+				7CDB1485190CC67B00434AC9 /* Security.framework in Frameworks */,
+				7CDB1483190CC66800434AC9 /* MobileCoreServices.framework in Frameworks */,
+				7CDB1481190CC65B00434AC9 /* libz.1.1.3.dylib in Frameworks */,
+				7CDB147F190CC65100434AC9 /* CFNetwork.framework in Frameworks */,
 				7CDB146E190BA69400434AC9 /* MapKit.framework in Frameworks */,
 				7CDB146C190BA3A300434AC9 /* CoreLocation.framework in Frameworks */,
+				7CDB147D190CC5AA00434AC9 /* Parse.framework in Frameworks */,
 				7CDB146A190B96AF00434AC9 /* EventKit.framework in Frameworks */,
 				7CDB1468190B91AE00434AC9 /* Social.framework in Frameworks */,
 				7C3ADBA2190843500039F594 /* CoreGraphics.framework in Frameworks */,
@@ -133,6 +154,13 @@
 		7C3ADB9E190843500039F594 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CDB1488190CC69A00434AC9 /* SystemConfiguration.framework */,
+				7CDB1486190CC68900434AC9 /* StoreKit.framework */,
+				7CDB1484190CC67B00434AC9 /* Security.framework */,
+				7CDB1482190CC66800434AC9 /* MobileCoreServices.framework */,
+				7CDB1480190CC65B00434AC9 /* libz.1.1.3.dylib */,
+				7CDB147E190CC65100434AC9 /* CFNetwork.framework */,
+				7CDB147C190CC5AA00434AC9 /* Parse.framework */,
 				7CDB146D190BA69400434AC9 /* MapKit.framework */,
 				7CDB146B190BA3A300434AC9 /* CoreLocation.framework */,
 				7CDB1469190B96AF00434AC9 /* EventKit.framework */,
@@ -153,8 +181,6 @@
 				91E227D8190CB0E000D1C282 /* default.jpg */,
 				91E227D9190CB0E000D1C282 /* PostEventController.h */,
 				91E227DA190CB0E000D1C282 /* PostEventController.m */,
-				7CDB1452190B300B00434AC9 /* full_breakfast.jpg */,
-				7CDB1450190B2DF700434AC9 /* ham_and_egg_sandwich.jpg */,
 				7C3ADBAE190843500039F594 /* AppDelegate.h */,
 				7C3ADBAF190843500039F594 /* AppDelegate.m */,
 				7C3ADBB1190843500039F594 /* Main.storyboard */,
@@ -283,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CDB145D190B51E700434AC9 /* photo-frame.png in Resources */,
-				7CDB1453190B300B00434AC9 /* full_breakfast.jpg in Resources */,
 				91E227DB190CB0E000D1C282 /* default.jpg in Resources */,
 				7C3ADBBB190843500039F594 /* Images.xcassets in Resources */,
 				7C3ADBAA190843500039F594 /* InfoPlist.strings in Resources */,
@@ -440,6 +465,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FreeFood/FreeFood-Prefix.pch";
 				INFOPLIST_FILE = "FreeFood/FreeFood-Info.plist";
@@ -456,6 +485,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FreeFood/FreeFood-Prefix.pch";
 				INFOPLIST_FILE = "FreeFood/FreeFood-Info.plist";

@@ -20,21 +20,62 @@
 
 @implementation FirstViewController
 {
-    NSMutableArray *events;
-    NSArray *searchResults;
+//    NSMutableArray *events;
+//    NSArray *searchResults;
 }
+
+-(id)initWithCoder:(NSCoder *)aCoder {
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        self.parseClassName = @"event";
+        self.textKey = @"description";
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = NO;
+    }
+    
+    return self;
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self retrieveData];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshTable:)
+                                                 name:@"refreshTable"
+                                               object:nil];
 }
+
+- (void)refreshTable:(NSNotification *) notification
+{
+    // Reload the recipes
+    [self loadObjects];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshTable" object:nil];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+-(PFQuery *)queryForTable {
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    return query;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
+/*
 -(void)retrieveData {
     NSError *error;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mobile.yiye.im:8080/mobile/queryAll.do"]];
@@ -58,15 +99,9 @@
         [events addObject:event];
     }
 }
+ 
+*/
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResults count];
-    } else {
-        return [events count];
-    }
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -74,7 +109,7 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     static NSString *CellIdentifier = @"FoodViewCell";
     
@@ -84,25 +119,40 @@
         cell = [[FoodViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
     }
     
-    EventBean *event = nil;
+
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        event = [searchResults objectAtIndex:indexPath.row];
-    } else {
-        event = [events objectAtIndex:indexPath.row];
-    }
-    
-    cell.eventLabel.text = event.title;
-    
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithFormat:@"http://mobile.yiye.im:8080/%@", event.imgUrl]]];
-    cell.eventImage.image = [UIImage imageWithData: imageData];
-    cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", event.building, event.place];
-   // cell.eventTime.text
-    
+//    if (tableView == self.searchDisplayController.searchResultsTableView) {
+//        event = [searchResults objectAtIndex:indexPath.row];
+//    } else {
+        cell.eventLabel.text = [object objectForKey:@"description"];
+        PFFile *thumbnail = [object objectForKey:@"image"];
+        PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+        thumbnailImageView.file = thumbnail;
+        [thumbnailImageView loadInBackground];
+        cell.eventPlace.text = [object objectForKey:@"building"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM-dd-yyyy"];
+        cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
+        //[NSString stringWithFormat:@"%@ %@", event.building, event.place];
+//    }
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Remove the row from data model
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self refreshTable:nil];
+    }];
+}
 
+- (void) objectsDidLoad:(NSError *)error
+{
+    [super objectsDidLoad:error];
+    
+    NSLog(@"error: %@", [error localizedDescription]);
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showdetail"]) {
@@ -111,10 +161,10 @@
         
         if (self.searchDisplayController.active) {
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            event = [searchResults objectAtIndex:indexPath.row];
+            //event = [searchResults objectAtIndex:indexPath.row];
         } else {
             indexPath = [self.tableView indexPathForSelectedRow];
-            event = [events objectAtIndex:indexPath.row];
+           // event = [events objectAtIndex:indexPath.row];
         }
         
         indexPath = [self.tableView indexPathForSelectedRow];
@@ -127,12 +177,13 @@
         PostEventController *destViewController = segue.destinationViewController;
         destViewController.hidesBottomBarWhenPushed = YES;
     }
+
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
-    searchResults = [events filteredArrayUsingPredicate:resultPredicate];
+  //  searchResults = [events filteredArrayUsingPredicate:resultPredicate];
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
