@@ -546,7 +546,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Post Event" id="FIu-rA-N4a">
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="xra-A2-r5f"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="gQV-Bs-ZjG">
+                            <connections>
+                                <action selector="cancelPressed:" destination="yHx-2M-Z0m" id="M22-fo-GYd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="xra-A2-r5f">
+                            <connections>
+                                <action selector="sendPressed:" destination="yHx-2M-Z0m" id="8Vt-Vm-1lj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="description" destination="PsX-me-tNx" id="QmP-lj-o1q"/>
