@@ -172,7 +172,6 @@ enum PinAnnotationTypeTag {
 - (void)updateLocations {
     CGFloat kilometers = self.radius/1000.0f;
     NSLog(@"update Locations");
-    NSLog(@"%f %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
     
     PFQuery *query = [PFQuery queryWithClassName:@"event"];
     [query setLimit:1000];
@@ -180,11 +179,9 @@ enum PinAnnotationTypeTag {
        nearGeoPoint:[PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude] withinKilometers:kilometers];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"%li", [objects count]);
             for (PFObject *object in objects) {
                 GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc] initWithObject:object];
                 [self.mapView addAnnotation:geoPointAnnotation];
-                NSLog(@"pin pointed %f %f", geoPointAnnotation.coordinate.latitude, geoPointAnnotation.coordinate.longitude);
             }
         }
     }];
