@@ -225,6 +225,7 @@ calloutAccessoryControlTapped:(UIControl *)control
     [query setLimit:1000];
     [query whereKey:@"coordinate"
        nearGeoPoint:[PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude] withinKilometers:kilometers];
+    [query whereKey:@"endTime" greaterThanOrEqualTo:[NSDate date]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects) {

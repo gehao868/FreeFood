@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     _isFullScreen = false;
+    [self.view bringSubviewToFront:_bigImage];
     
     self.bigImage.file = self.event.image;
     [self.bigImage loadInBackground];
@@ -58,10 +59,10 @@
     }
     else{
         [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+            _bigImage.backgroundColor = [UIColor whiteColor];
             [_bigImage setFrame:_prevFrame];
         }completion:^(BOOL finished){
             _isFullScreen = NO;
-            _bigImage.backgroundColor = [UIColor whiteColor];
         }];
         return;
     }
