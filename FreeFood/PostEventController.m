@@ -207,7 +207,9 @@
     
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    
     localNotification.fireDate = _startDateTime;
+    
     localNotification.alertBody = [NSString stringWithFormat:@"%@ at %@ %@", _description.text, _locationLabel.text, _room.text];
     localNotification.alertAction = @"Show me the free food event";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
@@ -217,7 +219,6 @@
     
     // Request to reload table view data
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-    
     
 }
 
