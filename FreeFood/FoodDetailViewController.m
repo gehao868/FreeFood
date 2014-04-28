@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _isFullScreen = false;
     
     self.bigImage.file = self.event.image;
     [self.bigImage loadInBackground];
@@ -42,6 +42,28 @@
     self.startTime.text = [formatter stringFromDate:self.event.startTime];
     self.endTime.text = [formatter stringFromDate:self.event.endTime];
     
+}
+
+- (IBAction)tapDetected:(id)sender {
+    if (!_isFullScreen) {
+        [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+            //save previous frame
+            _prevFrame = _bigImage.frame;
+            [_bigImage setFrame:[[UIScreen mainScreen] bounds]];
+            _bigImage.backgroundColor = [UIColor blackColor];
+        }completion:^(BOOL finished){
+            _isFullScreen = YES;
+        }];
+        return;
+    }
+    else{
+        [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
+            [_bigImage setFrame:_prevFrame];
+        }completion:^(BOOL finished){
+            _isFullScreen = NO;;
+        }];
+        return;
+    }
 }
 
 - (void)didReceiveMemoryWarning

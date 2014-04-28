@@ -111,6 +111,9 @@
                             <imageView tag="101" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GX7-jB-ywq" customClass="PFImageView">
                                 <rect key="frame" x="22" y="87" width="276" height="189"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pxj-GH-vq8" appends="YES" id="q7E-QM-OC6"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0M0-eI-1HZ">
                                 <rect key="frame" x="22" y="305" width="178" height="26"/>
@@ -187,6 +190,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="Event Detail" id="gmG-Fo-Ham">
                         <barButtonItem key="rightBarButtonItem" image="star" id="4mF-BU-O2J">
@@ -205,6 +209,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zf-SU-MXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pxj-GH-vq8">
+                    <connections>
+                        <action selector="tapDetected:" destination="htf-nk-VJv" id="L5a-x2-grv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1874" y="146"/>
         </scene>
