@@ -40,6 +40,7 @@
 		7CDB1489190CC69A00434AC9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDB1488190CC69A00434AC9 /* SystemConfiguration.framework */; };
 		91E227DB190CB0E000D1C282 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91E227D8190CB0E000D1C282 /* default.jpg */; };
 		91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DA190CB0E000D1C282 /* PostEventController.m */; };
+		91E227DF190DDBBA00D1C282 /* GeoQueryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		91E227D8190CB0E000D1C282 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		91E227D9190CB0E000D1C282 /* PostEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEventController.h; sourceTree = "<group>"; };
 		91E227DA190CB0E000D1C282 /* PostEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEventController.m; sourceTree = "<group>"; };
+		91E227DD190DDBBA00D1C282 /* GeoQueryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoQueryAnnotation.h; sourceTree = "<group>"; };
+		91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoQueryAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 				7C3ADBB5190843500039F594 /* FirstViewController.m */,
 				7C3ADBB7190843500039F594 /* SecondViewController.h */,
 				7C3ADBB8190843500039F594 /* SecondViewController.m */,
+				91E227DD190DDBBA00D1C282 /* GeoQueryAnnotation.h */,
+				91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */,
 				7C3ADBBA190843500039F594 /* Images.xcassets */,
 				7C3ADBA6190843500039F594 /* Supporting Files */,
 				7CDB1456190B350B00434AC9 /* FoodViewCell.h */,
@@ -343,6 +348,7 @@
 				7CDB1460190B615B00434AC9 /* EventBean.m in Sources */,
 				7C3ADBB6190843500039F594 /* FirstViewController.m in Sources */,
 				7C3ADBAC190843500039F594 /* main.m in Sources */,
+				91E227DF190DDBBA00D1C282 /* GeoQueryAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
