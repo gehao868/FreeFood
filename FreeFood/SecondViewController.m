@@ -22,6 +22,8 @@
     [self.mapView setDelegate:self];
     [self.mapView setShowsUserLocation:YES];
     [super viewDidLoad];
+    MKUserTrackingBarButtonItem *trackButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    self.navigationItem.rightBarButtonItem = trackButton;
 }
 
 - (void)didReceiveMemoryWarning
