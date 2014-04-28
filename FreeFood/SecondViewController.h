@@ -19,5 +19,6 @@
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, assign) CLLocationDistance radius;
 @property (nonatomic, strong) CircleOverlay *targetOverlay;
+@property (strong, nonatomic) IBOutlet UISlider *slider;
 
 @end
