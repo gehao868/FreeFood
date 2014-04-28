@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -304,7 +304,7 @@
         <scene sceneID="d5J-jK-gLo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6FG-iH-0Yr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nearby" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="nav" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XSt-B3-gBF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -638,8 +638,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="default.jpg" width="400" height="400"/>
+        <image name="nav" width="30" height="30"/>
         <image name="photo-frame.png" width="297" height="199"/>
-        <image name="second" width="30" height="30"/>
         <image name="star" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
