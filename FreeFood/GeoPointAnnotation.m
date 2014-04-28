@@ -23,6 +23,8 @@
         
         PFGeoPoint *geoPoint = self.object[@"coordinate"];
         [self setGeoPoint:geoPoint];
+        _title = self.object[@"description"];
+        _subtitle = [NSString stringWithFormat:@"%@ %@", self.object[@"building"], self.object[@"place"]];
     }
     return self;
 }
@@ -62,10 +64,6 @@
         numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
         numberFormatter.maximumFractionDigits = 3;
     }
-    
-    _title = [dateFormatter stringFromDate:self.object.updatedAt];
-    _subtitle = [NSString stringWithFormat:@"%@, %@", [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.latitude]],
-                 [numberFormatter stringFromNumber:[NSNumber numberWithDouble:geoPoint.longitude]]];    
 }
 
 @end
