@@ -60,7 +60,8 @@
         [UIView animateWithDuration:0.5 delay:0 options:0 animations:^{
             [_bigImage setFrame:_prevFrame];
         }completion:^(BOOL finished){
-            _isFullScreen = NO;;
+            _isFullScreen = NO;
+            _bigImage.backgroundColor = [UIColor whiteColor];
         }];
         return;
     }
