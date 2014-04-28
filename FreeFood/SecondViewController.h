@@ -10,9 +10,14 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
+#import "CircleOverlay.h"
+
 
 @interface SecondViewController : UIViewController <MKMapViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic, assign) CLLocationDistance radius;
+@property (nonatomic, strong) CircleOverlay *targetOverlay;
 
 @end
