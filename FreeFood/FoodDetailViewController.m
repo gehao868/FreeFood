@@ -139,6 +139,9 @@
         }];
         [self presentViewController:tweetSheet animated:YES completion:nil];
     } else if (buttonIndex == 2) {
+        NSString *title = @"Free food event";
+        NSString *messageBody = txt;
+        
         
     } else if (buttonIndex == 3) {
         

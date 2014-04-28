@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0D368F190DD3F100DE3060 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0D368E190DD3F100DE3060 /* MessageUI.framework */; };
 		7C3ADBA0190843500039F594 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3ADB9F190843500039F594 /* Foundation.framework */; };
 		7C3ADBA2190843500039F594 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3ADBA1190843500039F594 /* CoreGraphics.framework */; };
 		7C3ADBA4190843500039F594 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3ADBA3190843500039F594 /* UIKit.framework */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0D368E190DD3F100DE3060 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7C3ADB9C190843500039F594 /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3ADB9F190843500039F594 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C3ADBA1190843500039F594 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0D368F190DD3F100DE3060 /* MessageUI.framework in Frameworks */,
 				7CDB1489190CC69A00434AC9 /* SystemConfiguration.framework in Frameworks */,
 				7CDB1487190CC68900434AC9 /* StoreKit.framework in Frameworks */,
 				7CDB1485190CC67B00434AC9 /* Security.framework in Frameworks */,
@@ -154,6 +157,7 @@
 		7C3ADB9E190843500039F594 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C0D368E190DD3F100DE3060 /* MessageUI.framework */,
 				7CDB1488190CC69A00434AC9 /* SystemConfiguration.framework */,
 				7CDB1486190CC68900434AC9 /* StoreKit.framework */,
 				7CDB1484190CC67B00434AC9 /* Security.framework */,

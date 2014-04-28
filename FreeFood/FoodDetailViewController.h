@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "EventBean.h"
+#import <MessageUI/MessageUI.h>
 
-@interface FoodDetailViewController : UIViewController <UIActionSheetDelegate>
+@interface FoodDetailViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *eventPlace;

@@ -67,7 +67,7 @@
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query orderByAscending:@"startTime"];
     
-    [query whereKey:@"startTime" greaterThanOrEqualTo:[NSDate date]];
+    [query whereKey:@"endTime" greaterThanOrEqualTo:[NSDate date]];
     
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     return query;
