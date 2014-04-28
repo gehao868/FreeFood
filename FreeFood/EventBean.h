@@ -16,7 +16,7 @@
 @property (strong, nonatomic) PFFile *image;
 @property (strong, nonatomic) NSString *building;
 @property (strong, nonatomic) NSString *place;
-@property (strong, nonatomic) NSString *coordinate;
+@property (strong, nonatomic) PFGeoPoint *coordinate;
 @property (strong, nonatomic) NSDate *startTime;
 @property (strong, nonatomic) NSDate *endTime;
 

@@ -105,6 +105,17 @@
     
 }
 
+- (IBAction)getDirection:(id)sender {
+    
+    CLLocationCoordinate2D endCoor = (CLLocationCoordinate2D){self.event.coordinate.latitude, self.event.coordinate.longitude};
+    
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark: [[MKPlacemark alloc] initWithCoordinate:endCoor addressDictionary:nil]];
+    toLocation.name = [NSString stringWithFormat:@"%@ %@", self.event.building, self.event.place];
+    [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
+                   launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+}
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSDateFormatter *tempFormatter = [[NSDateFormatter alloc]init];
