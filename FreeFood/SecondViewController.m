@@ -44,11 +44,11 @@ enum PinAnnotationTypeTag {
     NSLog(@"position updated");
     CLLocationCoordinate2D loc = [userLocation coordinate];
     if (!initRegion) {
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 250, 250);
-        [self.mapView setRegion:region animated:YES];
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 100, 100);
+//        [self.mapView setRegion:region animated:YES];
         initRegion = YES;
         [self setInitialLocation:[userLocation location]];
-        self.mapView.region = MKCoordinateRegionMake(self.location.coordinate, MKCoordinateSpanMake(0.05f, 0.05f));
+        self.mapView.region = MKCoordinateRegionMake(self.location.coordinate, MKCoordinateSpanMake(0.02f, 0.02));
         [self configureOverlay];
     }
 }
@@ -88,6 +88,8 @@ enum PinAnnotationTypeTag {
             annotationView.pinColor = MKPinAnnotationColorRed;
             annotationView.animatesDrop = YES;
             annotationView.draggable = NO;
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
         }
         
         return annotationView;
@@ -145,7 +147,7 @@ enum PinAnnotationTypeTag {
 
 - (void)setInitialLocation:(CLLocation *)aLocation {
     self.location = aLocation;
-    self.radius = 1000;
+    self.radius = 500;
 }
 
 
