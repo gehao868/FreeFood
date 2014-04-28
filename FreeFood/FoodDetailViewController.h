@@ -10,8 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EventBean.h"
 #import <MessageUI/MessageUI.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface FoodDetailViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface FoodDetailViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *eventPlace;
@@ -21,6 +23,7 @@
 
 - (IBAction)shareButton:(id)sender;
 - (IBAction)saveToCal:(id)sender;
+- (IBAction)getDirection:(id)sender;
 
 @property UIActionSheet *standardIBAS;
 

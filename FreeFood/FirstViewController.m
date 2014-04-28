@@ -144,6 +144,8 @@
         event.startTime = [object objectForKey:@"startTime"];
         event.endTime = [object objectForKey:@"endTime"];
         
+        event.coordinate = [object objectForKey:@"coordinate"];
+        
         indexPath = [self.tableView indexPathForSelectedRow];
         destViewController.hidesBottomBarWhenPushed = YES;
         destViewController.event = event;
