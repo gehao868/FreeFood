@@ -10,7 +10,7 @@
 #import <Social/Social.h>
 #import <EventKit/EventKit.h>
 
-@interface FoodDetailViewController ()
+@interface FoodDetailViewController () <MFMessageComposeViewControllerDelegate>
 
 @end
 
@@ -139,15 +139,79 @@
         }];
         [self presentViewController:tweetSheet animated:YES completion:nil];
     } else if (buttonIndex == 2) {
+        if (![MFMailComposeViewController canSendMail]){
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support Email!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            return;
+        }
+        
         NSString *title = @"Free food event";
         NSString *messageBody = txt;
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+        [mc setSubject:title];
+        [mc setMessageBody:messageBody isHTML:YES];
+        [self.event.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                NSData *data = UIImageJPEGRepresentation(image, 1.0);
+                [mc addAttachmentData:data mimeType:@"image/jpeg" fileName:@"FreeFood Event"];
+            }
+        }];
+        
+        [self presentViewController:mc animated:YES completion:NULL];
         
         
     } else if (buttonIndex == 3) {
+        if(![MFMessageComposeViewController canSendText]) {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            return;
+        }
         
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+        messageController.messageComposeDelegate = self;
+        [messageController setBody:txt];
+        
+        // Present message view controller on screen
+        [self presentViewController:messageController animated:YES completion:nil];
     }
     
     //NSLog(@"Button at index: %d clicked\nIt's title is '%@'", buttonIndex, [actionSheet buttonTitleAtIndex:buttonIndex]);
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"It's away!");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
