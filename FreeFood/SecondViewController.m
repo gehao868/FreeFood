@@ -9,6 +9,7 @@
 #import "SecondViewController.h"
 #import "GeoQueryAnnotation.h"
 #import "GeoPointAnnotation.h"
+#import "FoodDetailViewController.h"
 
 
 enum PinAnnotationTypeTag {
@@ -128,6 +129,34 @@ enum PinAnnotationTypeTag {
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"detail" sender:view];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    FoodDetailViewController *destViewController = segue.destinationViewController;
+    
+    MKAnnotationView *annotationView = sender;
+    GeoPointAnnotation *geoPointAnnotation = [annotationView annotation];
+    PFObject *object = geoPointAnnotation.object;
+    EventBean *event = [[EventBean alloc] init];
+    
+    event.description = [object objectForKey:@"description"];
+    event.image = [object objectForKey:@"image"];
+    event.building =[object objectForKey:@"building"];
+    event.place = [object objectForKey:@"place"];
+    
+    event.startTime = [object objectForKey:@"startTime"];
+    event.endTime = [object objectForKey:@"endTime"];
+    
+    event.coordinate = [object objectForKey:@"coordinate"];
+    
+    destViewController.hidesBottomBarWhenPushed = YES;
+    destViewController.event = event;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
