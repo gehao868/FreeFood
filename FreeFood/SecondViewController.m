@@ -32,7 +32,6 @@ enum PinAnnotationTypeTag {
     [super viewDidLoad];
     MKUserTrackingBarButtonItem *trackButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
     self.navigationItem.rightBarButtonItem = trackButton;
-    self.radius = 1000000.f;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,9 +47,10 @@ enum PinAnnotationTypeTag {
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 250, 250);
         [self.mapView setRegion:region animated:YES];
         initRegion = YES;
+        [self setInitialLocation:[userLocation location]];
+        self.mapView.region = MKCoordinateRegionMake(self.location.coordinate, MKCoordinateSpanMake(0.05f, 0.05f));
+        [self configureOverlay];
     }
-    self.location = [userLocation location];
-    [self updateLocations];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
@@ -71,6 +71,23 @@ enum PinAnnotationTypeTag {
             annotationView.pinColor = MKPinAnnotationColorPurple;
             annotationView.animatesDrop = NO;
             annotationView.draggable = YES;
+        }
+        
+        return annotationView;
+    } else if ([annotation isKindOfClass:[GeoPointAnnotation class]]) {
+        MKPinAnnotationView *annotationView =
+        (MKPinAnnotationView *)[mapView
+                                dequeueReusableAnnotationViewWithIdentifier:GeoPointAnnotationIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc]
+                              initWithAnnotation:annotation
+                              reuseIdentifier:GeoPointAnnotationIdentifier];
+            annotationView.tag = PinAnnotationTypeTagGeoPoint;
+            annotationView.canShowCallout = YES;
+            annotationView.pinColor = MKPinAnnotationColorRed;
+            annotationView.animatesDrop = YES;
+            annotationView.draggable = NO;
         }
         
         return annotationView;
