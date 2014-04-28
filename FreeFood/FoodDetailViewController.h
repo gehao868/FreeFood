@@ -21,9 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *endTime;
 @property (weak, nonatomic) IBOutlet PFImageView *bigImage;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *followButton;
+
 - (IBAction)shareButton:(id)sender;
 - (IBAction)saveToCal:(id)sender;
 - (IBAction)getDirection:(id)sender;
+- (IBAction)follow:(id)sender;
 
 @property UIActionSheet *standardIBAS;
 

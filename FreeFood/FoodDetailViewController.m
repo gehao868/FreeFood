@@ -117,6 +117,10 @@
                    launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
 }
 
+- (IBAction)follow:(id)sender {
+   // [self.followButton setImage:]
+}
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSDateFormatter *tempFormatter = [[NSDateFormatter alloc]init];
