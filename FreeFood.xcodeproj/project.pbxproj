@@ -41,6 +41,8 @@
 		91E227DB190CB0E000D1C282 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91E227D8190CB0E000D1C282 /* default.jpg */; };
 		91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DA190CB0E000D1C282 /* PostEventController.m */; };
 		91E227DF190DDBBA00D1C282 /* GeoQueryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */; };
+		91E227E2190DF7BB00D1C282 /* CircleOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227E1190DF7BB00D1C282 /* CircleOverlay.m */; };
+		91E227E5190DF9C900D1C282 /* GeoPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E227E4190DF9C900D1C282 /* GeoPointAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,10 @@
 		91E227DA190CB0E000D1C282 /* PostEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEventController.m; sourceTree = "<group>"; };
 		91E227DD190DDBBA00D1C282 /* GeoQueryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoQueryAnnotation.h; sourceTree = "<group>"; };
 		91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoQueryAnnotation.m; sourceTree = "<group>"; };
+		91E227E0190DF7BB00D1C282 /* CircleOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleOverlay.h; sourceTree = "<group>"; };
+		91E227E1190DF7BB00D1C282 /* CircleOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleOverlay.m; sourceTree = "<group>"; };
+		91E227E3190DF9C900D1C282 /* GeoPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoPointAnnotation.h; sourceTree = "<group>"; };
+		91E227E4190DF9C900D1C282 /* GeoPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoPointAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +203,10 @@
 				7C3ADBB8190843500039F594 /* SecondViewController.m */,
 				91E227DD190DDBBA00D1C282 /* GeoQueryAnnotation.h */,
 				91E227DE190DDBBA00D1C282 /* GeoQueryAnnotation.m */,
+				91E227E3190DF9C900D1C282 /* GeoPointAnnotation.h */,
+				91E227E4190DF9C900D1C282 /* GeoPointAnnotation.m */,
+				91E227E0190DF7BB00D1C282 /* CircleOverlay.h */,
+				91E227E1190DF7BB00D1C282 /* CircleOverlay.m */,
 				7C3ADBBA190843500039F594 /* Images.xcassets */,
 				7C3ADBA6190843500039F594 /* Supporting Files */,
 				7CDB1456190B350B00434AC9 /* FoodViewCell.h */,
@@ -342,12 +352,14 @@
 			files = (
 				7C3ADBB9190843500039F594 /* SecondViewController.m in Sources */,
 				7CDB145B190B505F00434AC9 /* FoodDetailViewController.m in Sources */,
+				91E227E5190DF9C900D1C282 /* GeoPointAnnotation.m in Sources */,
 				7CDB1458190B350B00434AC9 /* FoodViewCell.m in Sources */,
 				7C3ADBB0190843500039F594 /* AppDelegate.m in Sources */,
 				91E227DC190CB0E000D1C282 /* PostEventController.m in Sources */,
 				7CDB1460190B615B00434AC9 /* EventBean.m in Sources */,
 				7C3ADBB6190843500039F594 /* FirstViewController.m in Sources */,
 				7C3ADBAC190843500039F594 /* main.m in Sources */,
+				91E227E2190DF7BB00D1C282 /* CircleOverlay.m in Sources */,
 				91E227DF190DDBBA00D1C282 /* GeoQueryAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
