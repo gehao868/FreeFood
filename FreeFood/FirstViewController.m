@@ -107,7 +107,7 @@
     cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"building"], [object objectForKey:@"place"]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy HH:MM"];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
     cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
 
     return cell;

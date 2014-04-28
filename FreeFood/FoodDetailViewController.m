@@ -38,7 +38,7 @@
     self.eventPlace.text = [NSString stringWithFormat:@"%@ %@",self.event.building, self.event.place];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy HH:MM"];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
     self.startTime.text = [formatter stringFromDate:self.event.startTime];
     self.endTime.text = [formatter stringFromDate:self.event.endTime];
     
