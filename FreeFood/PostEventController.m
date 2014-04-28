@@ -202,24 +202,7 @@
         }
         
     }];
-    
     //send local notification
-    
-    // Schedule the notification
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    
-    localNotification.fireDate = _startDateTime;
-    
-    localNotification.alertBody = [NSString stringWithFormat:@"%@ at %@ %@", _description.text, _locationLabel.text, _room.text];
-    localNotification.alertAction = @"Show me the free food event";
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    
-    // Request to reload table view data
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

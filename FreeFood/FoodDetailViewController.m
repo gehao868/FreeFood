@@ -118,7 +118,26 @@
 }
 
 - (IBAction)follow:(id)sender {
-   // [self.followButton setImage:]
+    
+    [self.followButton setImage:[UIImage imageNamed:@"starfull"]];
+    
+    
+    // Schedule the notification
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    
+    localNotification.fireDate = self.event.startTime;
+    
+    localNotification.alertBody = [NSString stringWithFormat:@"%@ at %@ %@", self.event.description, self.event.building, self.event.place];
+    localNotification.alertAction = @"Show me the free food event";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    // Request to reload table view data
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+    
+    
 }
 
 
