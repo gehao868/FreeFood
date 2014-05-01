@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C3ADB9B190843500039F594"
                BuildableName = "FreeFood.app"
-               BlueprintName = "FreeFood"
-               ReferencedContainer = "container:FreeFood.xcodeproj">
+               BlueprintName = "FoodLocker"
+               ReferencedContainer = "container:FoodLocker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7C3ADBBF190843500039F594"
                BuildableName = "FreeFoodTests.xctest"
-               BlueprintName = "FreeFoodTests"
-               ReferencedContainer = "container:FreeFood.xcodeproj">
+               BlueprintName = "FoodLockerTests"
+               ReferencedContainer = "container:FoodLocker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C3ADB9B190843500039F594"
             BuildableName = "FreeFood.app"
-            BlueprintName = "FreeFood"
-            ReferencedContainer = "container:FreeFood.xcodeproj">
+            BlueprintName = "FoodLocker"
+            ReferencedContainer = "container:FoodLocker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C3ADB9B190843500039F594"
             BuildableName = "FreeFood.app"
-            BlueprintName = "FreeFood"
-            ReferencedContainer = "container:FreeFood.xcodeproj">
+            BlueprintName = "FoodLocker"
+            ReferencedContainer = "container:FoodLocker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7C3ADB9B190843500039F594"
             BuildableName = "FreeFood.app"
-            BlueprintName = "FreeFood"
-            ReferencedContainer = "container:FreeFood.xcodeproj">
+            BlueprintName = "FoodLocker"
+            ReferencedContainer = "container:FoodLocker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
