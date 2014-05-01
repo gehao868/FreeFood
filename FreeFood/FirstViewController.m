@@ -20,7 +20,9 @@
 
 @implementation FirstViewController
 {
-
+    BOOL isSearch;
+    NSString *searchTerm;
+    NSMutableArray *searchResults;
 }
 
 -(id)initWithCoder:(NSCoder *)aCoder {
@@ -43,12 +45,12 @@
                                              selector:@selector(refreshTable:)
                                                  name:@"refreshTable"
                                                object:nil];
+    searchResults = [NSMutableArray array];
 
 }
 
 - (void)refreshTable:(NSNotification *) notification
 {
-    // Reload the recipes
     [self loadObjects];
 }
 
@@ -69,7 +71,6 @@
     [query orderByAscending:@"startTime"];
     
     [query whereKey:@"endTime" greaterThanOrEqualTo:[NSDate date]];
-    
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     return query;
 }
@@ -87,6 +88,14 @@
     return 85;
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.tableView) {
+        
+        return self.objects.count;
+    } else {
+        return searchResults.count;
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
@@ -98,18 +107,33 @@
         cell = [[FoodViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
     }
     
-    cell.eventLabel.text = [object objectForKey:@"description"];
-    PFFile *thumbnail = [object objectForKey:@"image"];
-    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
-    thumbnailImageView.file = thumbnail;
-    [thumbnailImageView loadInBackground];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        PFObject *newObject = [searchResults objectAtIndex:indexPath.row];
+        cell.eventLabel.text = [newObject objectForKey:@"description"];
+        PFFile *thumbnail = [newObject objectForKey:@"image"];
+        PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+        thumbnailImageView.file = thumbnail;
+        [thumbnailImageView loadInBackground];
+        
+        cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [newObject objectForKey:@"building"], [newObject objectForKey:@"place"]];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        cell.eventTime.text = [formatter stringFromDate:[newObject objectForKey:@"startTime"]];
+        NSLog(@"%@", [newObject objectForKey:@"description"]);
+    } else {
+        cell.eventLabel.text = [object objectForKey:@"description"];
+        PFFile *thumbnail = [object objectForKey:@"image"];
+        PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+        thumbnailImageView.file = thumbnail;
+        [thumbnailImageView loadInBackground];
     
-    cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"building"], [object objectForKey:@"place"]];
+        cell.eventPlace.text = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"building"], [object objectForKey:@"place"]];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
-    cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
-
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        cell.eventTime.text = [formatter stringFromDate:[object objectForKey:@"startTime"]];
+    }
     return cell;
 }
 
@@ -124,8 +148,15 @@
     if ([segue.identifier isEqualToString:@"showdetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         FoodDetailViewController *destViewController = segue.destinationViewController;
-        
-        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        PFObject *object;
+        if (self.searchDisplayController.active) {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            NSLog(@"%li", indexPath.row);
+            object = [searchResults objectAtIndex:indexPath.row];
+        } else {
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            object = [self.objects objectAtIndex:indexPath.row];
+        }
         EventBean *event = [[EventBean alloc] init];
         
         event.description = [object objectForKey:@"description"];
@@ -150,17 +181,41 @@
 
 }
 
-//- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-//{
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    if ([searchText isEqualToString:@""]) {
+        isSearch = NO;
+    } else {
+        isSearch = YES;
+        searchTerm = searchText;
+    }
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query orderByAscending:@"startTime"];
+    
+    [query whereKey:@"endTime" greaterThanOrEqualTo:[NSDate date]];
+    if (isSearch) {
+        [query whereKey:@"description" containsString:searchTerm];
+        isSearch = NO;
+    }
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(callbackWithResult:error:)];
 //    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
-//  //  searchResults = [events filteredArrayUsingPredicate:resultPredicate];
-//}
-//
-//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-//                                                        objectAtIndex:[self.searchDisplayController.searchBar
-//                                                                       selectedScopeButtonIndex]]];
-//    return YES;
-//}
+  //  searchResults = [events filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (void)callbackWithResult:(NSArray *)celebrities error:(NSError *)error
+{
+    if(!error) {
+        [searchResults removeAllObjects];
+        [searchResults addObjectsFromArray:celebrities];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+    }
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                                        objectAtIndex:[self.searchDisplayController.searchBar
+                                                                       selectedScopeButtonIndex]]];
+    return YES;
+}
 
 @end

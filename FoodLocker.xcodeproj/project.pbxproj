@@ -57,11 +57,11 @@
 
 /* Begin PBXFileReference section */
 		7C0D368E190DD3F100DE3060 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		7C3ADB9C190843500039F594 /* FreeFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C3ADB9C190843500039F594 /* FoodLocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3ADB9F190843500039F594 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C3ADBA1190843500039F594 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7C3ADBA3190843500039F594 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		7C3ADBA7190843500039F594 /* FreeFood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreeFood-Info.plist"; sourceTree = "<group>"; };
+		7C3ADBA7190843500039F594 /* FoodLocker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodLocker-Info.plist"; sourceTree = "<group>"; };
 		7C3ADBA9190843500039F594 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C3ADBAB190843500039F594 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7C3ADBAD190843500039F594 /* FreeFood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FreeFood-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,9 +73,9 @@
 		7C3ADBB7190843500039F594 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		7C3ADBB8190843500039F594 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		7C3ADBBA190843500039F594 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7C3ADBC0190843500039F594 /* FreeFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C3ADBC0190843500039F594 /* FoodLockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodLockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C3ADBC1190843500039F594 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		7C3ADBC9190843500039F594 /* FreeFoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreeFoodTests-Info.plist"; sourceTree = "<group>"; };
+		7C3ADBC9190843500039F594 /* FoodLockerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodLockerTests-Info.plist"; sourceTree = "<group>"; };
 		7C3ADBCB190843500039F594 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C3ADBCD190843500039F594 /* FreeFoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeFoodTests.m; sourceTree = "<group>"; };
 		7CDB1456190B350B00434AC9 /* FoodViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewCell.h; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		7C3ADB9D190843500039F594 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C3ADB9C190843500039F594 /* FreeFood.app */,
-				7C3ADBC0190843500039F594 /* FreeFoodTests.xctest */,
+				7C3ADB9C190843500039F594 /* FoodLocker.app */,
+				7C3ADBC0190843500039F594 /* FoodLockerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 		7C3ADBA6190843500039F594 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C3ADBA7190843500039F594 /* FreeFood-Info.plist */,
+				7C3ADBA7190843500039F594 /* FoodLocker-Info.plist */,
 				7C3ADBA8190843500039F594 /* InfoPlist.strings */,
 				7C3ADBAB190843500039F594 /* main.m */,
 				7C3ADBAD190843500039F594 /* FreeFood-Prefix.pch */,
@@ -242,7 +242,7 @@
 		7C3ADBC8190843500039F594 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C3ADBC9190843500039F594 /* FreeFoodTests-Info.plist */,
+				7C3ADBC9190843500039F594 /* FoodLockerTests-Info.plist */,
 				7C3ADBCA190843500039F594 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C3ADB9B190843500039F594 /* FreeFood */ = {
+		7C3ADB9B190843500039F594 /* FoodLocker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C3ADBD1190843500039F594 /* Build configuration list for PBXNativeTarget "FreeFood" */;
+			buildConfigurationList = 7C3ADBD1190843500039F594 /* Build configuration list for PBXNativeTarget "FoodLocker" */;
 			buildPhases = (
 				7C3ADB98190843500039F594 /* Sources */,
 				7C3ADB99190843500039F594 /* Frameworks */,
@@ -263,14 +263,14 @@
 			);
 			dependencies = (
 			);
-			name = FreeFood;
+			name = FoodLocker;
 			productName = FreeFood;
-			productReference = 7C3ADB9C190843500039F594 /* FreeFood.app */;
+			productReference = 7C3ADB9C190843500039F594 /* FoodLocker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7C3ADBBF190843500039F594 /* FreeFoodTests */ = {
+		7C3ADBBF190843500039F594 /* FoodLockerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C3ADBD4190843500039F594 /* Build configuration list for PBXNativeTarget "FreeFoodTests" */;
+			buildConfigurationList = 7C3ADBD4190843500039F594 /* Build configuration list for PBXNativeTarget "FoodLockerTests" */;
 			buildPhases = (
 				7C3ADBBC190843500039F594 /* Sources */,
 				7C3ADBBD190843500039F594 /* Frameworks */,
@@ -281,9 +281,9 @@
 			dependencies = (
 				7C3ADBC6190843500039F594 /* PBXTargetDependency */,
 			);
-			name = FreeFoodTests;
+			name = FoodLockerTests;
 			productName = FreeFoodTests;
-			productReference = 7C3ADBC0190843500039F594 /* FreeFoodTests.xctest */;
+			productReference = 7C3ADBC0190843500039F594 /* FoodLockerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7C3ADB97190843500039F594 /* Build configuration list for PBXProject "FreeFood" */;
+			buildConfigurationList = 7C3ADB97190843500039F594 /* Build configuration list for PBXProject "FoodLocker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -316,8 +316,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C3ADB9B190843500039F594 /* FreeFood */,
-				7C3ADBBF190843500039F594 /* FreeFoodTests */,
+				7C3ADB9B190843500039F594 /* FoodLocker */,
+				7C3ADBBF190843500039F594 /* FoodLockerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -377,7 +377,7 @@
 /* Begin PBXTargetDependency section */
 		7C3ADBC6190843500039F594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7C3ADB9B190843500039F594 /* FreeFood */;
+			target = 7C3ADB9B190843500039F594 /* FoodLocker */;
 			targetProxy = 7C3ADBC5190843500039F594 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -492,9 +492,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FreeFood/FreeFood-Prefix.pch";
-				INFOPLIST_FILE = "FreeFood/FreeFood-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FreeFood/FoodLocker-Prefix.pch";
+				INFOPLIST_FILE = "FreeFood/FoodLocker-Info.plist";
+				PRODUCT_NAME = FoodLocker;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -512,9 +512,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FreeFood/FreeFood-Prefix.pch";
-				INFOPLIST_FILE = "FreeFood/FreeFood-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FreeFood/FoodLocker-Prefix.pch";
+				INFOPLIST_FILE = "FreeFood/FoodLocker-Info.plist";
+				PRODUCT_NAME = FoodLocker;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -535,8 +535,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FreeFoodTests/FreeFoodTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FreeFoodTests/FoodLockerTests-Info.plist";
+				PRODUCT_NAME = FoodLockerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -553,8 +553,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FreeFood/FreeFood-Prefix.pch";
-				INFOPLIST_FILE = "FreeFoodTests/FreeFoodTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FreeFoodTests/FoodLockerTests-Info.plist";
+				PRODUCT_NAME = FoodLockerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -563,7 +563,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C3ADB97190843500039F594 /* Build configuration list for PBXProject "FreeFood" */ = {
+		7C3ADB97190843500039F594 /* Build configuration list for PBXProject "FoodLocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C3ADBCF190843500039F594 /* Debug */,
@@ -572,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C3ADBD1190843500039F594 /* Build configuration list for PBXNativeTarget "FreeFood" */ = {
+		7C3ADBD1190843500039F594 /* Build configuration list for PBXNativeTarget "FoodLocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C3ADBD2190843500039F594 /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C3ADBD4190843500039F594 /* Build configuration list for PBXNativeTarget "FreeFoodTests" */ = {
+		7C3ADBD4190843500039F594 /* Build configuration list for PBXNativeTarget "FoodLockerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C3ADBD5190843500039F594 /* Debug */,
